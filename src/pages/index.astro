@@ -1,11 +1,207 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/MainLayout.astro";
+import { FileText, CircleDollarSign, HelpCircle } from "@lucide/astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Juzgado de Faltas Municipal | Catamarca">
+  <!-- Hero -->
+  <section
+    class="bg-linear-to-r from-slate-800 via-blue-900 to-indigo-900 text-white"
+  >
+    <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+        Juzgado de Faltas Municipal
+      </h1>
+      <p class="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-6">
+        Resolvé tus trámites, multas y consultas de forma simple, clara y sin
+        complicaciones.
+      </p>
+
+      <div class="flex justify-center">
+        <div class="bg-white/10 backdrop-blur px-5 py-3 rounded-full text-sm">
+          ✔️ Elegí una opción y te llevamos directo
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accesos principales -->
+  <section class="bg-white py-18 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-slate-800 text-center mb-3">
+        ¿Qué necesitás hacer hoy?
+      </h2>
+      <p class="text-center text-slate-500 mb-12">
+        Accedé rápido a los trámites más usados del Juzgado de Faltas
+      </p>
+
+      <div class="grid gap-7 md:grid-cols-3">
+        <!-- Multas -->
+        <a
+          href="https://multasinfojuzgado.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-blue-100 text-blue-700 p-3 rounded-xl">
+              <HelpCircle size={22} />
+            </div>
+            <h3 class="font-semibold text-lg text-slate-800">
+              Tengo una multa
+            </h3>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">
+            Te explicamos qué significa, qué opciones tenés y cómo seguir paso a
+            paso.
+          </p>
+          <span class="text-blue-700 font-semibold group-hover:underline">
+            Ver información →
+          </span>
+        </a>
+
+        <!-- Libre deuda -->
+        <a
+          href="https://libredeuda.apps.cc.gob.ar/"
+          target="_blank"
+          rel="noreferrer"
+          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-emerald-100 text-emerald-700 p-3 rounded-xl">
+              <FileText size={22} />
+            </div>
+            <h3 class="font-semibold text-lg text-slate-800">
+              Necesito libre deuda
+            </h3>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">
+            Solicitá tu certificado de libre deuda en pocos minutos desde acá.
+          </p>
+          <span class="text-emerald-700 font-semibold group-hover:underline">
+            Solicitar →
+          </span>
+        </a>
+
+        <!-- Pagos -->
+        <a
+          href="https://pagosonlinejuzgado.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-indigo-100 text-indigo-700 p-3 rounded-xl">
+              <CircleDollarSign size={22} />
+            </div>
+            <h3 class="font-semibold text-lg text-slate-800">
+              Quiero pagar una multa
+            </h3>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">
+            Pagá de forma online, rápida y segura con los medios habilitados.
+          </p>
+          <span class="text-indigo-700 font-semibold group-hover:underline">
+            Ir al pago →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info institucional mejorada -->
+  <section class="bg-slate-50 py-18 px-4">
+    <div class="max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-center">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-4">
+          ¿Qué es el Juzgado de Faltas?
+        </h2>
+        <p class="text-slate-700 mb-4 leading-relaxed">
+          El Juzgado de Faltas Municipal es el organismo encargado de resolver
+          infracciones a las normas de tránsito y ordenanzas municipales,
+          garantizando el derecho a defensa y el debido proceso de cada
+          ciudadano.
+        </p>
+        <p class="text-slate-700 leading-relaxed">
+          Desde este portal podés informarte, iniciar trámites y acceder a los
+          servicios digitales más importantes sin necesidad de acercarte
+          presencialmente, ahorrando tiempo y evitando esperas innecesarias.
+        </p>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-4">
+          <div class="flex items-center gap-3 text-sm text-slate-700">
+            ✅ Atención clara y sin tecnicismos
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-700">
+            ✅ Trámites simples y accesibles
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-700">
+            ✅ Información oficial y confiable
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-7 border border-slate-200">
+        <h3 class="font-semibold text-slate-800 mb-3 flex items-center gap-2">
+          📍 Atención presencial
+        </h3>
+
+        <div class="space-y-2 text-sm text-slate-700">
+          <p>
+            <strong>Dirección:</strong> Maipú Norte 550
+          </p>
+          <p>
+            <strong>Horario:</strong><br />
+            Lunes a Sábado · 08:00 a 16:00 hs<br />
+            Domingo · 08:00 a 12:00 hs
+          </p>
+        </div>
+
+        <div class="mt-4 bg-slate-50 rounded-xl p-4 text-sm text-slate-600">
+          💡 Si tenés una multa o consulta, podés iniciar todo online desde este
+          portal antes de acercarte.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final mejorado -->
+  <section class="bg-white py-16 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <div
+        class="bg-linear-to-r from-slate-100 to-blue-100 rounded-2xl p-10 shadow-sm"
+      >
+        <div
+          class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full text-sm text-slate-700 shadow mb-4"
+        >
+          🤔 ¿Tenés dudas?
+        </div>
+
+        <h3 class="text-2xl font-bold text-slate-800 mb-3">
+          No sabés por dónde empezar
+        </h3>
+        <p class="text-slate-700 mb-6 max-w-xl mx-auto leading-relaxed">
+          Si recibiste una multa o no estás seguro qué trámite corresponde,
+          entrá a la sección de información y te guiamos paso a paso con
+          explicaciones claras y simples.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="https://multasinfojuzgado.netlify.app/"
+            class="inline-block bg-blue-700 hover:bg-blue-800 transition text-white font-semibold px-7 py-3 rounded-lg shadow"
+          >
+            Ver información sobre multas
+          </a>
+
+          <a
+            href="https://pagosonlinejuzgado.netlify.app/"
+            class="inline-block border border-blue-700 text-blue-700 hover:bg-blue-50 transition font-semibold px-7 py-3 rounded-lg"
+          >
+            Ir directo a pagar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
