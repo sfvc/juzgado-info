@@ -50,7 +50,7 @@ import {
   <section
     class="bg-linear-to-r from-slate-800 via-blue-900 to-indigo-900 text-white"
   >
-    <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+    <div class="max-w-7xl mx-auto px-6 py-12 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
         Juzgado de Faltas Municipal
       </h1>
@@ -74,7 +74,7 @@ import {
   </section>
 
   <!-- Accesos principales -->
-  <section class="bg-white py-20 px-4">
+  <section class="bg-white py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-bold text-slate-800 text-center mb-3">
         ¿Qué querés hacer ahora?
@@ -158,7 +158,7 @@ import {
   </section>
 
   <!-- Cómo funciona -->
-  <section class="bg-slate-100 py-20 px-4">
+  <section class="bg-slate-100 py-12 px-4">
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-2xl font-bold text-slate-800 mb-10">
         ¿Cómo resolver una multa?
@@ -198,13 +198,13 @@ import {
   </section>
 
   <!-- Qué necesitás llevar / saber -->
-  <section class="bg-white py-20 px-4">
+  <section class="bg-white py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl font-bold text-slate-800 text-center mb-3">
         ¿Qué necesitás para resolver una multa?
       </h2>
       <p class="text-center text-slate-500 mb-12">
-        Te dejamos lo principal para evitar demoras o viajes innecesarios
+        Traé esta documentación y conocé los plazos para evitar recargos
       </p>
 
       <div class="grid gap-8 md:grid-cols-3">
@@ -218,9 +218,13 @@ import {
           </div>
           <ul class="space-y-2 text-sm text-slate-700">
             <li>✔️ DNI del infractor</li>
-            <li>✔️ Cédula del vehículo (verde o azul)</li>
-            <li>✔️ Acta o número de infracción (si lo tenés)</li>
-            <li>✔️ Poder o autorización si realiza el trámite un tercero</li>
+            <li>✔️ DNI del titular del vehículo</li>
+            <li>✔️ Cédula verde o título del automotor</li>
+            <li>✔️ Licencia de conducir</li>
+            <li>✔️ Comprobante de seguro</li>
+            <li class="text-xs text-slate-500 mt-2">
+              📄 Toda la documentación debe presentarse en fotocopia
+            </li>
           </ul>
         </div>
 
@@ -230,13 +234,13 @@ import {
         >
           <div class="flex items-center gap-3 mb-4 text-emerald-700">
             <CircleDollarSign size={22} />
-            <h3 class="font-semibold text-slate-800">Pagos</h3>
+            <h3 class="font-semibold text-slate-800">Pago voluntario</h3>
           </div>
           <ul class="space-y-2 text-sm text-slate-700">
-            <li>✔️ Medios habilitados: credito, débito o efectivo</li>
-            <li>✔️ El monto se actualiza automáticamente</li>
-            <li>✔️ Se emite comprobante oficial</li>
+            <li>✔️ Tenés <strong>30 días</strong> para acceder al descuento</li>
             <li>✔️ Podés pagar online o presencialmente</li>
+            <li>✔️ El sistema emite comprobante oficial</li>
+            <li>✔️ Luego del vencimiento se actualiza el monto</li>
           </ul>
         </div>
 
@@ -246,12 +250,14 @@ import {
         >
           <div class="flex items-center gap-3 mb-4 text-indigo-700">
             <Clock size={22} />
-            <h3 class="font-semibold text-slate-800">Plazos</h3>
+            <h3 class="font-semibold text-slate-800">Descargos y recargos</h3>
           </div>
           <ul class="space-y-2 text-sm text-slate-700">
-            <li>✔️ El pago voluntario suele tener descuento</li>
-            <li>✔️ Vencido el plazo, el monto se actualiza</li>
-            <li>✔️ Podés presentar descargo antes de pagar</li>
+            <li>
+              ✔️ Si presentás descargo, <strong>perdés el descuento</strong>
+            </li>
+            <li>✔️ Pasados los 30 días entra en <strong>rebeldía</strong></li>
+            <li>✔️ En rebeldía se quita el descuento y se suma recargo</li>
             <li>✔️ Algunas faltas requieren resolución judicial previa</li>
           </ul>
         </div>
@@ -260,15 +266,14 @@ import {
       <div
         class="mt-10 bg-blue-50 border border-blue-100 rounded-2xl p-6 text-sm text-slate-700 max-w-6xl mx-auto"
       >
-        💡 <strong>Importante:</strong> Siempre se recomienda consultar tu multa online
-        antes de acercarte para confirmar estado, monto actualizado y documentación
-        necesaria.
+        💡 <strong>Recomendación:</strong> Consultá tu multa online antes de acercarte
+        para confirmar estado, monto actualizado y documentación necesaria.
       </div>
     </div>
   </section>
 
   <!-- Info institucional -->
-  <section id="atencion" class="bg-slate-50 py-20 px-4">
+  <section id="atencion" class="bg-slate-50 py-12 px-4">
     <div class="max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-center">
       <div>
         <h2 class="text-2xl font-bold text-slate-800 mb-4">
@@ -319,7 +324,7 @@ import {
   </section>
 
   <!-- Preguntas frecuentes -->
-  <section class="bg-white py-20 px-4">
+  <section class="bg-white py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl font-bold text-center mb-10">Preguntas frecuentes</h2>
 
@@ -364,7 +369,7 @@ import {
   </section>
 
   <!-- CTA final -->
-  <section class="bg-slate-50 py-20 px-4">
+  <section class="bg-slate-50 py-12 px-4">
     <div class="max-w-6xl mx-auto text-center">
       <div
         class="bg-linear-to-r from-slate-100 to-blue-100 rounded-2xl p-10 shadow-sm"
