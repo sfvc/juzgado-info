@@ -12,6 +12,7 @@ import {
   Utensils,
   SearchCheck,
   X,
+  FileCheckCorner,
 } from "@lucide/astro";
 ---
 
@@ -82,36 +83,42 @@ import {
   <section class="bg-slate-100 py-14 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-bold text-center text-slate-800 mb-3">
-        Tipos de Actas y Procedimientos
+        Tramites que se pueden realizar
       </h2>
       <p class="text-center text-slate-500 mb-10 max-w-2xl mx-auto">
         Consultá los requisitos necesarios para el pago voluntario o la
         presentación de descargo, según el tipo de acta labrada.
       </p>
 
-      <div class="grid gap-7 md:grid-cols-4">
+      <div class="grid gap-7 md:grid-cols-5">
         <!-- Transito -->
         <button data-type="transito" class="acta-card">
           <Car size={28} />
-          <span>Tránsito</span>
+          <span>TRÁNSITO</span>
         </button>
 
         <!-- Obras -->
         <button data-type="obras" class="acta-card">
           <Building2 size={28} />
-          <span>Obras Particulares</span>
+          <span>OBRAS PARTICULARES</span>
         </button>
 
         <!-- Bromatologia -->
         <button data-type="bromatologia" class="acta-card">
           <Utensils size={28} />
-          <span>Bromatología</span>
+          <span>BROMATOLOGÍA</span>
         </button>
 
         <!-- Inspeccion -->
         <button data-type="inspeccion" class="acta-card">
           <SearchCheck size={28} />
-          <span>Inspección</span>
+          <span>INSPECCIÓN / POLICIA AMBIENTAL</span>
+        </button>
+
+        <!-- Libre Deuda -->
+        <button data-type="libre_deuda" class="acta-card">
+          <FileCheckCorner size={28} />
+          <span>LIBRE DEUDA</span>
         </button>
       </div>
     </div>
@@ -134,26 +141,84 @@ import {
 
       <h3 id="modalTitle" class="text-xl font-bold mb-6 text-slate-800"></h3>
 
-      <!-- Pago -->
-      <div class="mb-6">
-        <h4 class="font-semibold text-blue-700 mb-3">
-          Requisitos para el Pago Voluntario <span class="text-black"
-            >(40% de descuento)</span
-          >
-        </h4>
-        <ul class="text-sm text-slate-700 space-y-2">
-          <li>✔️ Fotocopia del DNI del titular</li>
-        </ul>
+      <div id="multasContent">
+        <div class="mb-3">
+          <h4 class="font-semibold text-blue-700">
+            Requisitos para el Pago Voluntario
+            <span class="text-black">(40% de descuento)</span>
+          </h4>
 
-        <div id="pagoRestriccion" class="mt-4"></div>
+          <p class="font-semibold text-green-700 mb-3 mt-1">
+            (40 % de descuento) solo podrá tener este beneficio en casos de no
+            poseer multas anteriores a la fecha del acta a pagar
+          </p>
+
+          <ul class="text-sm text-slate-700 space-y-2">
+            <li>✔️ Fotocopia del DNI del titular</li>
+            <li>✔️ Fotocopia del DNI del infractor</li>
+            <li>
+              ✔️ Realizar el pago en los primeros 30 días después de la
+              notificación
+            </li>
+          </ul>
+          <div class="mt-3">
+            <a
+              href="https://pagosonlinejuzgado.netlify.app/"
+              target="_blank"
+              class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 transition text-white text-sm font-semibold px-5 py-2.5 rounded-lg"
+            >
+              Ir al Sistema de Pago Online
+            </a>
+          </div>
+          <div id="pagoRestriccion" class="mt-3"></div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-indigo-700 mb-3">
+            Requisitos para Descargo
+          </h4>
+          <ul id="descargoList" class="text-sm text-slate-700 space-y-2"></ul>
+          <div
+            class="mt-4 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-lg p-4"
+          >
+            <strong>⚠️ Importante:</strong> Este trámite es presencial por Mesa de
+            Entrada del Juzgado de Faltas según fecha de labrado:
+            <br /><br />
+            📅 Del 1° al 15 → Juzgado de Faltas N° 1
+            <br />
+            📅 Del 16 al 31 → Juzgado de Faltas N° 2
+            <br /><br />
+            Deben concurrir con documentación original y copia. Es obligatoria la
+            presencia del conductor y del titular.
+            <br /><br />
+            🕒 Atención: Lunes a Viernes de 08:00 a 15:00 hs.
+          </div>
+        </div>
       </div>
 
-      <!-- Descargo -->
-      <div>
-        <h4 class="font-semibold text-indigo-700 mb-3">
-          Requisitos para Presentar Descargo
-        </h4>
-        <ul id="descargoList" class="text-sm text-slate-700 space-y-2"></ul>
+      <div id="libreDeudaContent" class="hidden">
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
+          <p class="text-slate-700 leading-relaxed">
+            Para solicitar el <strong>Certificado de Libre Deuda</strong>, el
+            contribuyente
+            <span class="text-blue-800 font-bold"
+              >no debe registrar multas pendientes de pago</span
+            >
+            ni procesos judiciales abiertos en este Juzgado de Faltas.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <a
+            href="https://libredeuda.apps.cc.gob.ar/"
+            target="_blank"
+            rel="noreferrer"
+            class="flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 transition text-white font-semibold px-6 py-3 rounded-xl w-full shadow-sm"
+          >
+            <FileCheckCorner size={20} />
+            Ir al Sistema de Libre Deuda
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -170,52 +235,33 @@ import {
       const descargoList = document.getElementById(
         "descargoList",
       ) as HTMLUListElement;
-
-      const commonDescargo = `
-        <li>✔️ Fotocopia del DNI del titular</li>
-        <li>✔️ Nota explicando el motivo del descargo</li>
-      `;
-
-      const comercialExtra = `
-        <li>✔️ Habilitación comercial correspondiente o constancia de alta en ARCA</li>
-      `;
-
-      const transitoExtra = `
-        <li>✔️ Copia de la cédula del titular</li>
-        <li>✔️ Copia del seguro vigente</li>
-      `;
-
       const pagoRestriccion = document.getElementById(
         "pagoRestriccion",
       ) as HTMLDivElement;
+      const multasContent = document.getElementById(
+        "multasContent",
+      ) as HTMLDivElement;
+      const libreDeudaContent = document.getElementById(
+        "libreDeudaContent",
+      ) as HTMLDivElement;
 
-      const restriccionTransito = `
-        <div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">
-          ⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos:
-          <strong>163, 164, 166, 169, 193, 194, 81</strong>.
-        </div>
-      `;
+      const commonDescargo = `
+      <li>✔️ Fotocopia del DNI del titular</li>
+      <li>✔️ Fotocopia del DNI del infractor</li>
+      <li>✔️ Nota explicando el motivo del descargo</li>
+    `;
 
-      const restriccionObras = `
-        <div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">
-          ⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos:
-          <strong>87, 88, 24</strong>.
-        </div>
-      `;
+      const comercialExtra = `<li>✔️ Habilitación comercial correspondiente o constancia de alta en ARCA</li>`;
+      const transitoExtra = `
+      <li>✔️ Fotocopia de la licencia de conducir del infractor</li>
+      <li>✔️ Fotocopia de la cédula del infractor</li>
+      <li>✔️ Fotocopia del seguro vigente</li>
+    `;
 
-      const restriccionInspeccion = `
-        <div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">
-          ⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos:
-          <strong>24, 62, 14</strong>.
-        </div>
-      `;
-
-      const restriccionBromatologia = `
-        <div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">
-          ⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos:
-          <strong>24, 14, 72</strong>.
-        </div>
-      `;
+      const restriccionTransito = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a <strong>retención de vehículo</strong> o los códigos: <strong>163, 164, 166, 169, 193, 194, 81</strong>.</div>`;
+      const restriccionObras = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>87, 88, 24</strong>.</div>`;
+      const restriccionInspeccion = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 62, 14</strong>.</div>`;
+      const restriccionBromatologia = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 14, 72</strong>.</div>`;
 
       const buttons =
         document.querySelectorAll<HTMLButtonElement>(".acta-card");
@@ -223,32 +269,35 @@ import {
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const type = btn.dataset.type;
-
           if (!type) return;
 
-          if (type === "transito") {
-            modalTitle.textContent = "Acta de Infracción de Tránsito";
-            descargoList.innerHTML = commonDescargo + transitoExtra;
-          } else if (type === "obras") {
-            modalTitle.textContent = "Acta de Obras Particulares";
-            descargoList.innerHTML = commonDescargo + comercialExtra;
-          } else if (type === "bromatologia") {
-            modalTitle.textContent = "Acta de Bromatología";
-            descargoList.innerHTML = commonDescargo + comercialExtra;
-          } else {
-            modalTitle.textContent = "Acta de Inspección General";
-            descargoList.innerHTML = commonDescargo + comercialExtra;
-          }
+          multasContent.classList.add("hidden");
+          libreDeudaContent.classList.add("hidden");
 
-          pagoRestriccion.innerHTML = "";
-          if (type === "transito") {
-            pagoRestriccion.innerHTML = restriccionTransito;
-          } else if (type === "obras") {
-            pagoRestriccion.innerHTML = restriccionObras;
-          } else if (type === "bromatologia") {
-            pagoRestriccion.innerHTML = restriccionBromatologia;
+          if (type === "libre_deuda") {
+            modalTitle.textContent = "Solicitud de Libre Deuda";
+            libreDeudaContent.classList.remove("hidden");
           } else {
-            pagoRestriccion.innerHTML = restriccionInspeccion;
+            modalTitle.textContent = "Información del Acta";
+            multasContent.classList.remove("hidden");
+
+            if (type === "transito") {
+              modalTitle.textContent = "Acta de Infracción de Tránsito";
+              descargoList.innerHTML = commonDescargo + transitoExtra;
+              pagoRestriccion.innerHTML = restriccionTransito;
+            } else if (type === "obras") {
+              modalTitle.textContent = "Acta de Obras Particulares";
+              descargoList.innerHTML = commonDescargo + comercialExtra;
+              pagoRestriccion.innerHTML = restriccionObras;
+            } else if (type === "bromatologia") {
+              modalTitle.textContent = "Acta de Bromatología";
+              descargoList.innerHTML = commonDescargo + comercialExtra;
+              pagoRestriccion.innerHTML = restriccionBromatologia;
+            } else if (type === "inspeccion") {
+              modalTitle.textContent = "Acta de Inspección General";
+              descargoList.innerHTML = commonDescargo + comercialExtra;
+              pagoRestriccion.innerHTML = restriccionInspeccion;
+            }
           }
 
           modal.classList.remove("hidden");
@@ -256,146 +305,19 @@ import {
         });
       });
 
-      closeModal.addEventListener("click", () => {
+      const closeAction = () => {
         modal.classList.add("hidden");
         modal.classList.remove("flex");
-      });
+      };
 
+      closeModal.addEventListener("click", closeAction);
       modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.classList.add("hidden");
-          modal.classList.remove("flex");
-        }
+        if (e.target === modal) closeAction();
       });
     });
   </script>
 
-  <!-- Accesos principales -->
-  <section class="bg-white py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl font-bold text-slate-800 text-center mb-3">
-        ¿Qué documentación y plazos debés tener en cuenta para resolver tu
-        multa?
-      </h2>
-      <p class="text-center text-slate-500 mb-12">
-        Accedé directamente a los trámites más usados
-      </p>
-
-      <div class="grid gap-7 md:grid-cols-3">
-        <!-- Multas -->
-        <a
-          href="https://multasinfojuzgado.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
-        >
-          <div class="flex items-center gap-4 mb-4">
-            <div class="bg-blue-100 text-blue-700 p-3 rounded-xl">
-              <HelpCircle size={22} />
-            </div>
-            <h3 class="font-semibold text-lg text-slate-800">
-              Tengo una multa
-            </h3>
-          </div>
-          <p class="text-slate-600 text-sm mb-5">
-            Consultá qué significa, si está vigente y qué opciones tenés para
-            resolverla.
-          </p>
-          <span class="text-blue-700 font-semibold group-hover:underline">
-            Ver información →
-          </span>
-        </a>
-
-        <!-- Libre deuda -->
-        <a
-          href="https://libredeuda.apps.cc.gob.ar/"
-          target="_blank"
-          rel="noreferrer"
-          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
-        >
-          <div class="flex items-center gap-4 mb-4">
-            <div class="bg-emerald-100 text-emerald-700 p-3 rounded-xl">
-              <FileText size={22} />
-            </div>
-            <h3 class="font-semibold text-lg text-slate-800">
-              Necesito libre deuda
-            </h3>
-          </div>
-          <p class="text-slate-600 text-sm mb-5">
-            Solicitá tu certificado en minutos desde el sistema oficial.
-          </p>
-          <span class="text-emerald-700 font-semibold group-hover:underline">
-            Solicitar →
-          </span>
-        </a>
-
-        <!-- Pagos -->
-        <a
-          href="https://pagosonlinejuzgado.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
-        >
-          <div class="flex items-center gap-4 mb-4">
-            <div class="bg-indigo-100 text-indigo-700 p-3 rounded-xl">
-              <CircleDollarSign size={22} />
-            </div>
-            <h3 class="font-semibold text-lg text-slate-800">
-              Quiero pagar una multa
-            </h3>
-          </div>
-          <p class="text-slate-600 text-sm mb-5">
-            Pagá online de forma segura con los medios habilitados.
-          </p>
-          <span class="text-indigo-700 font-semibold group-hover:underline">
-            Ir al pago →
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cómo funciona -->
-  <section class="bg-slate-100 py-12 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-2xl font-bold text-slate-800 mb-10">
-        ¿Cómo podés consultar y resolver tu multa paso a paso?
-      </h2>
-
-      <div class="grid gap-7 md:grid-cols-3">
-        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
-          <div class="text-3xl mb-3">1️⃣</div>
-          <h3 class="font-semibold mb-2 text-slate-800">
-            Consultá tu infracción
-          </h3>
-          <p class="text-sm text-slate-600">
-            Ingresá tu dominio o datos personales y verificá el estado de tu
-            multa.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
-          <div class="text-3xl mb-3">2️⃣</div>
-          <h3 class="font-semibold mb-2 text-slate-800">
-            Elegí cómo continuar
-          </h3>
-          <p class="text-sm text-slate-600">
-            Podés pagarla, presentar descargo o solicitar información adicional.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
-          <div class="text-3xl mb-3">3️⃣</div>
-          <h3 class="font-semibold mb-2 text-slate-800">Resolvé sin filas</h3>
-          <p class="text-sm text-slate-600">
-            Completá todo online o acercate solo si es necesario.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Qué necesitás llevar / saber -->
+    <!-- Qué necesitás llevar / saber -->
   <section class="bg-white py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl font-bold text-slate-800 text-center mb-3">
@@ -478,6 +400,131 @@ import {
     </div>
   </section>
 
+  <!-- Accesos principales -->
+  <section class="bg-slate-100 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-slate-800 text-center mb-3">
+        ¿Qué documentación y plazos debés tener en cuenta para resolver tu
+        multa?
+      </h2>
+      <p class="text-center text-slate-500 mb-12">
+        Accedé directamente a los trámites más usados
+      </p>
+
+      <div class="grid gap-7 md:grid-cols-3">
+        <!-- Pagos -->
+        <a
+          href="https://pagosonlinejuzgado.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-indigo-100 text-indigo-700 p-3 rounded-xl">
+              <CircleDollarSign size={22} />
+            </div>
+            <h3 class="font-semibold text-lg text-slate-800">
+              Quiero pagar una multa
+            </h3>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">
+            Pagá online de forma segura con los medios habilitados.
+          </p>
+          <span class="text-indigo-700 font-semibold group-hover:underline">
+            Ir al pago →
+          </span>
+        </a>
+
+        <!-- Libre deuda -->
+        <a
+          href="https://libredeuda.apps.cc.gob.ar/"
+          target="_blank"
+          rel="noreferrer"
+          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-emerald-100 text-emerald-700 p-3 rounded-xl">
+              <FileText size={22} />
+            </div>
+            <h3 class="font-semibold text-lg text-slate-800">
+              Necesito libre deuda
+            </h3>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">
+            Solicitá tu certificado en minutos desde el sistema oficial.
+          </p>
+          <span class="text-emerald-700 font-semibold group-hover:underline">
+            Solicitar →
+          </span>
+        </a>
+
+        <!-- Multas -->
+        <a
+          href="https://multasinfojuzgado.netlify.app/"
+          target="_blank"
+          rel="noreferrer"
+          class="group bg-slate-50 rounded-2xl p-7 shadow-sm hover:shadow-md transition hover:-translate-y-1 border border-slate-200"
+        >
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-blue-100 text-blue-700 p-3 rounded-xl">
+              <HelpCircle size={22} />
+            </div>
+            <h3 class="font-semibold text-lg text-slate-800">
+              Tengo una multa
+            </h3>
+          </div>
+          <p class="text-slate-600 text-sm mb-5">
+            Consultá qué significa, si está vigente y qué opciones tenés para
+            resolverla.
+          </p>
+          <span class="text-blue-700 font-semibold group-hover:underline">
+            Ver información →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <!-- <section class="bg-slate-100 py-12 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-2xl font-bold text-slate-800 mb-10">
+        ¿Cómo podés consultar y resolver tu multa paso a paso?
+      </h2>
+
+      <div class="grid gap-7 md:grid-cols-3">
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
+          <div class="text-3xl mb-3">1️⃣</div>
+          <h3 class="font-semibold mb-2 text-slate-800">
+            Consultá tu infracción
+          </h3>
+          <p class="text-sm text-slate-600">
+            Ingresá tu dominio o datos personales y verificá el estado de tu
+            multa.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
+          <div class="text-3xl mb-3">2️⃣</div>
+          <h3 class="font-semibold mb-2 text-slate-800">
+            Elegí cómo continuar
+          </h3>
+          <p class="text-sm text-slate-600">
+            Podés pagarla, presentar descargo o solicitar información adicional.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200">
+          <div class="text-3xl mb-3">3️⃣</div>
+          <h3 class="font-semibold mb-2 text-slate-800">Resolvé sin filas</h3>
+          <p class="text-sm text-slate-600">
+            Completá todo online o acercate solo si es necesario.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
   <!-- Info institucional -->
   <section id="atencion" class="bg-slate-50 py-12 px-4">
     <div class="max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-center">
@@ -515,7 +562,7 @@ import {
           </p>
           <p>
             <strong>Horario:</strong><br />
-            Lunes a Sábado · 08:00 a 16:00 hs<br />
+            Lunes a Sábado · 08:00 a 15:00 hs<br />
             Domingo · 08:00 a 12:00 hs
           </p>
         </div>
@@ -570,7 +617,8 @@ import {
           <p class="mt-3 text-sm text-slate-600">
             En la mayoría de los casos no es obligatorio. Podés iniciar y
             resolver el trámite online desde el sistema de pagos o consulta.
-            Solo deberás asistir si el caso requiere resolución presencial o tu vehículo fue retenido.
+            Solo deberás asistir si el caso requiere resolución presencial o tu
+            vehículo fue retenido.
           </p>
         </details>
       </div>
