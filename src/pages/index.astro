@@ -17,45 +17,8 @@ import {
 ---
 
 <Layout title="Juzgado de Faltas Municipal | Catamarca">
-  <!-- Barra rápida -->
-  <section class="bg-blue-50 border-b border-blue-100">
-    <div
-      class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap gap-4 justify-center text-sm font-medium"
-    >
-      <a
-        href="https://multasinfojuzgado.netlify.app/"
-        target="_blank"
-        rel="noreferrer"
-        class="text-blue-700 hover:underline"
-      >
-        🚗 Consultar multas
-      </a>
-      <a
-        href="https://libredeuda.apps.cc.gob.ar/"
-        target="_blank"
-        rel="noreferrer"
-        class="text-emerald-700 hover:underline"
-      >
-        📄 Libre deuda
-      </a>
-      <a
-        href="https://pagosonlinejuzgado.netlify.app/"
-        target="_blank"
-        rel="noreferrer"
-        class="text-indigo-700 hover:underline"
-      >
-        💳 Pagar multas
-      </a>
-      <a href="#atencion" class="text-slate-700 hover:underline">
-        🕒 Atención presencial
-      </a>
-    </div>
-  </section>
-
   <!-- Hero -->
-  <section
-    class="bg-linear-to-r from-slate-800 via-blue-900 to-indigo-900 text-white"
-  >
+  <section class="bg-[#0f4c94] text-white">
     <div class="max-w-7xl mx-auto px-6 py-12 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
         Juzgado de Faltas Municipal
@@ -67,20 +30,29 @@ import {
 
       <div class="flex justify-center gap-3 flex-wrap">
         <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm"
-          >✔️ 100% online</span
+          >100% online</span
         >
         <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm"
-          >✔️ Oficial</span
+          >Oficial</span
         >
         <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm"
-          >✔️ Sin trámites innecesarios</span
+          >Sin trámites innecesarios</span
         >
       </div>
     </div>
   </section>
 
   <!-- Tipos de Actas -->
-  <section class="bg-slate-100 py-14 px-4">
+  <section class="bg-slate-100 py-8 px-4">
+    <div
+      class="bg-blue-50 border border-blue-200 text-blue-900 text-sm rounded-lg px-4 py-4 mb-6 max-w-6xl mx-auto"
+    >
+      <strong class="text-green-900">Trámite online:</strong> generalmente no requiere
+      presentar documentación.<br />
+      <strong class="text-amber-900">Trámite presencial:</strong> se debe asistir
+      con documentación original y copia.
+    </div>
+
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-bold text-center text-slate-800 mb-3">
         Tramites que se pueden realizar
@@ -90,7 +62,7 @@ import {
         presentación de descargo, según el tipo de acta labrada.
       </p>
 
-      <div class="grid gap-7 md:grid-cols-5">
+      <div class="grid gap-7 md:grid-cols-3">
         <!-- Transito -->
         <button data-type="transito" class="acta-card">
           <Car size={28} />
@@ -120,6 +92,12 @@ import {
           <FileCheckCorner size={28} />
           <span>LIBRE DEUDA</span>
         </button>
+
+        <!-- Descargo -->
+        <button data-type="descargo_online" class="acta-card">
+          <FileText size={28} />
+          <span>DESCARGO ONLINE</span>
+        </button>
       </div>
     </div>
   </section>
@@ -143,23 +121,18 @@ import {
 
       <div id="multasContent">
         <div class="mb-3">
-          <h4 class="font-semibold text-blue-700">
-            Requisitos para el Pago Voluntario
+          <h4 class="font-semibold text-emerald-700 mb-3">
+            Pago Voluntario Online
           </h4>
 
-          <p class="font-semibold text-green-700 mb-3 mt-1">
-            (40 % de descuento) solo podrá tener este beneficio en casos de no
-            poseer multas anteriores a la fecha del acta a pagar
-          </p>
+          <div
+            class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-sm text-emerald-900 mb-4"
+          >
+            ✔ En la mayoría de los casos no necesitás presentar documentación.<br
+            />
+            ✔ Solo debés ingresar al sistema y realizar el pago de la infracción.
+          </div>
 
-          <ul class="text-sm text-slate-700 space-y-2">
-            <li>✔️ Fotocopia del DNI del titular</li>
-            <li>✔️ Fotocopia del DNI del infractor</li>
-            <li>
-              ✔️ Realizar el pago en los primeros 30 días después de la
-              notificación
-            </li>
-          </ul>
           <div class="mt-3">
             <a
               href="https://pagosonlinejuzgado.netlify.app/"
@@ -169,12 +142,29 @@ import {
               Ir al Sistema de Pago Online
             </a>
           </div>
+
+          <hr class="my-6" />
+
+          <h4 class="font-semibold text-blue-700">
+            Pago Voluntario Presencial
+          </h4>
+
+          <p class="font-semibold text-green-700 mb-3 mt-1">
+            (40 % de descuento) solo podrá tener este beneficio en casos de no
+            poseer multas anteriores
+          </p>
+
+          <ul class="text-sm text-slate-700 space-y-2">
+            <li>✔ Fotocopia del DNI del titular</li>
+            <li>✔ Fotocopia del DNI del infractor</li>
+            <li>✔ Presentarse dentro de los 30 días desde la notificación</li>
+          </ul>
           <div id="pagoRestriccion" class="mt-3"></div>
         </div>
 
         <div>
           <h4 class="font-semibold text-indigo-700 mb-3">
-            Requisitos para Descargo
+            Requisitos para el Descargo Presencial
           </h4>
           <ul id="descargoList" class="text-sm text-slate-700 space-y-2"></ul>
           <div
@@ -188,7 +178,7 @@ import {
             📅 Del 16 al 31 → Juzgado de Faltas N° 2
             <br /><br />
             Deben concurrir con documentación original y copia. Es obligatoria la
-            presencia del conductor y del titular.
+            presencia del infractor y del titular.
             <br /><br />
             🕒 Atención: Lunes a Viernes de 08:00 a 15:00 hs.
           </div>
@@ -219,6 +209,32 @@ import {
           </a>
         </div>
       </div>
+
+      <div id="descargoOnlineContent" class="hidden">
+        <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 mb-6">
+          <p class="text-slate-700 leading-relaxed">
+            Podés presentar un <strong>descargo online</strong> sin necesidad de asistir
+            al Juzgado.
+          </p>
+
+          <ul class="mt-3 text-sm text-slate-700 space-y-2">
+            <li>
+              ✔ Solo necesitás redactar la <strong>nota de descargo</strong>
+            </li>
+            <li>✔ No es obligatorio adjuntar documentación</li>
+            <li>✔ Podés seguir el estado del trámite desde el sistema</li>
+          </ul>
+        </div>
+
+        <a
+          href="https://descargosjuzgado.netlify.app/"
+          target="_blank"
+          class="flex items-center justify-center gap-2 bg-indigo-700 hover:bg-indigo-800 transition text-white font-semibold px-6 py-3 rounded-xl w-full shadow-sm"
+        >
+          <FileText size={20} />
+          Ir al Sistema de Descargos
+        </a>
+      </div>
     </div>
   </div>
 
@@ -243,24 +259,28 @@ import {
       const libreDeudaContent = document.getElementById(
         "libreDeudaContent",
       ) as HTMLDivElement;
+      const descargoOnlineContent = document.getElementById(
+        "descargoOnlineContent",
+      ) as HTMLDivElement;
 
       const commonDescargo = `
-      <li>✔️ Fotocopia del DNI del titular</li>
-      <li>✔️ Fotocopia del DNI del infractor</li>
-      <li>✔️ Nota explicando el motivo del descargo</li>
-    `;
+      <li>✔ Fotocopia del DNI del titular</li>
+      <li>✔ Fotocopia del DNI del infractor</li>
+      <li>✔ Nota explicando el motivo del descargo</li>
+      `;
 
-      const comercialExtra = `<li>✔️ Habilitación comercial correspondiente o constancia de alta en ARCA</li>`;
+      const comercialExtra = `<li>✔ Habilitación comercial correspondiente o constancia de alta en ARCA</li>`;
+
       const transitoExtra = `
-      <li>✔️ Fotocopia de la licencia de conducir del infractor</li>
-      <li>✔️ Fotocopia de la cédula del infractor</li>
-      <li>✔️ Fotocopia del seguro vigente</li>
+      <li>✔ Fotocopia de la licencia de conducir del infractor</li>
+      <li>✔ Fotocopia de la cédula del infractor</li>
+      <li>✔ Fotocopia del seguro vigente</li>
     `;
 
-      const restriccionTransito = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a <strong>retención de vehículo</strong> o los códigos: <strong>163, 164, 166, 169, 193, 194, 81</strong>.</div>`;
-      const restriccionObras = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>87, 88, 24</strong>.</div>`;
-      const restriccionInspeccion = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 62, 14</strong>.</div>`;
-      const restriccionBromatologia = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 14, 72</strong>.</div>`;
+      // const restriccionTransito = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a <strong>retención de vehículo</strong> o los códigos: <strong>163, 164, 166, 169, 193, 194, 81</strong>.</div>`;
+      // const restriccionObras = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>87, 88, 24</strong>.</div>`;
+      // const restriccionInspeccion = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 62, 14</strong>.</div>`;
+      // const restriccionBromatologia = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 14, 72</strong>.</div>`;
 
       const buttons =
         document.querySelectorAll<HTMLButtonElement>(".acta-card");
@@ -272,8 +292,12 @@ import {
 
           multasContent.classList.add("hidden");
           libreDeudaContent.classList.add("hidden");
+          descargoOnlineContent.classList.add("hidden");
 
-          if (type === "libre_deuda") {
+          if (type === "descargo_online") {
+            modalTitle.textContent = "Presentar Descargo";
+            descargoOnlineContent.classList.remove("hidden");
+          } else if (type === "libre_deuda") {
             modalTitle.textContent = "Solicitud de Libre Deuda";
             libreDeudaContent.classList.remove("hidden");
           } else {
@@ -283,30 +307,34 @@ import {
             if (type === "transito") {
               modalTitle.textContent = "Acta de Infracción de Tránsito";
               descargoList.innerHTML = commonDescargo + transitoExtra;
-              pagoRestriccion.innerHTML = restriccionTransito;
+              // pagoRestriccion.innerHTML = restriccionTransito;
             } else if (type === "obras") {
               modalTitle.textContent = "Acta de Obras Particulares";
               descargoList.innerHTML = commonDescargo + comercialExtra;
-              pagoRestriccion.innerHTML = restriccionObras;
+              // pagoRestriccion.innerHTML = restriccionObras;
             } else if (type === "bromatologia") {
               modalTitle.textContent = "Acta de Bromatología";
               descargoList.innerHTML = commonDescargo + comercialExtra;
-              pagoRestriccion.innerHTML = restriccionBromatologia;
+              // pagoRestriccion.innerHTML = restriccionBromatologia;
             } else if (type === "inspeccion") {
               modalTitle.textContent = "Acta de Inspección General";
               descargoList.innerHTML = commonDescargo + comercialExtra;
-              pagoRestriccion.innerHTML = restriccionInspeccion;
+              // pagoRestriccion.innerHTML = restriccionInspeccion;
             }
           }
 
           modal.classList.remove("hidden");
           modal.classList.add("flex");
+
+          document.body.style.overflow = "hidden";
         });
       });
 
       const closeAction = () => {
         modal.classList.add("hidden");
         modal.classList.remove("flex");
+
+        document.body.style.overflow = "";
       };
 
       closeModal.addEventListener("click", closeAction);
@@ -336,11 +364,11 @@ import {
             <h3 class="font-semibold text-slate-800">Documentación</h3>
           </div>
           <ul class="space-y-2 text-sm text-slate-700">
-            <li>✔️ DNI del infractor</li>
-            <li>✔️ DNI del titular del vehículo</li>
-            <li>✔️ Cédula verde o título del automotor</li>
-            <li>✔️ Licencia de conducir</li>
-            <li>✔️ Comprobante de seguro</li>
+            <li>✔ DNI del infractor</li>
+            <li>✔ DNI del titular del vehículo</li>
+            <li>✔ Cédula verde o título del automotor</li>
+            <li>✔ Licencia de conducir</li>
+            <li>✔ Comprobante de seguro</li>
             <li class="text-xs text-slate-500 mt-2">
               📄 Toda la documentación debe presentarse en fotocopia
             </li>
@@ -357,15 +385,15 @@ import {
           </div>
           <ul class="space-y-2 text-sm text-slate-700">
             <li>
-              ✔️ Si realizás el pago dentro de los <strong>30 días</strong>,
+              ✔ Si realizás el pago dentro de los <strong>30 días</strong>,
               accedés a un <strong class="text-emerald-700"
                 >40% de descuento</strong
               >
             </li>
-            <li>✔️ Podés pagar online o presencialmente</li>
-            <li>✔️ El sistema emite comprobante oficial</li>
+            <li>✔ Podés pagar online o presencialmente</li>
+            <li>✔ El sistema emite comprobante oficial</li>
             <li>
-              ✔️ Luego del vencimiento se pierde el descuento y se actualiza el
+              ✔ Luego del vencimiento se pierde el descuento y se actualiza el
               monto
             </li>
           </ul>
@@ -381,11 +409,11 @@ import {
           </div>
           <ul class="space-y-2 text-sm text-slate-700">
             <li>
-              ✔️ Si presentás descargo, <strong>perdés el descuento</strong>
+              ✔ Si presentás descargo, <strong>perdés el descuento</strong>
             </li>
-            <li>✔️ Pasados los 30 días entra en <strong>rebeldía</strong></li>
-            <li>✔️ En rebeldía se quita el descuento y se suma recargo</li>
-            <li>✔️ Algunas faltas requieren resolución judicial previa</li>
+            <li>✔ Pasados los 30 días entra en <strong>rebeldía</strong></li>
+            <li>✔ En rebeldía se quita el descuento y se suma recargo</li>
+            <li>✔ Algunas faltas requieren resolución judicial previa</li>
           </ul>
         </div>
       </div>
@@ -527,7 +555,7 @@ import {
   <!-- Info institucional -->
   <section id="atencion" class="bg-slate-50 py-12 px-4">
     <div class="max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-center">
-      <div>
+      <div class="ml-2">
         <h2 class="text-2xl font-bold text-slate-800 mb-4">
           ¿Qué funciones cumple el Juzgado de Faltas Municipal?
         </h2>
@@ -570,6 +598,16 @@ import {
           class="mt-4 bg-slate-50 rounded-xl p-4 text-sm text-slate-600 border"
         >
           💡 Podés iniciar todo online antes de acercarte, para evitar esperas.
+        </div>
+
+        <div class="mt-5 rounded-xl overflow-hidden border border-slate-200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8224729709514!2d-65.78486322363769!3d-28.454767459395242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x942428a251aeaaf1%3A0xf311ea1386f35fa3!2sJuzgado%20Municipal%20de%20Faltas%20N2!5e0!3m2!1ses-419!2sar!4v1773231295344!5m2!1ses-419!2sar"
+            class="w-full h-70"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>

@@ -3,11 +3,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    font-family: inherit;
   }
 }
 
 .navbar__muni {
-  background-color: #232d4f;
+  background-color: #002454;
 }
 
 ::-webkit-scrollbar {
@@ -16,7 +21,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4e66b6;
+  background-color: #45B5DB;
   border-radius: 6px;
 }
 
@@ -24,16 +29,16 @@
   background-color: transparent;
 }
 
-  .acta-card {
-    @apply bg-white border border-slate-200 rounded-2xl p-6
-           flex flex-col items-center justify-center gap-3
-           shadow-sm transition-all duration-300
-           hover:shadow-xl hover:-translate-y-2
-           hover:border-blue-400
-           text-slate-700 hover:text-blue-700;
-           cursor: pointer;
-  }
+.acta-card {
+  @apply bg-white border border-slate-200 rounded-2xl p-6
+         flex flex-col items-center justify-center gap-3
+         shadow-sm transition-all duration-300
+         hover:shadow-xl hover:-translate-y-2
+         hover:border-blue-400
+         text-slate-700 hover:text-blue-700;
+  cursor: pointer;
+}
 
-  .acta-card svg {
-    @apply text-blue-600;
-  }
+.acta-card svg {
+  @apply text-blue-600;
+}
