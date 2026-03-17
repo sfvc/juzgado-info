@@ -39,17 +39,145 @@ const { title = "Juzgado de Faltas Municipal" } = Astro.props;
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#232d4f] text-white text-sm">
-      <div class="max-w-7xl mx-auto px-4 py-4 text-center">
-        © {new Date().getFullYear()}
-        <a
-          href="https://www.catamarcaciudad.gob.ar"
-          target="_blank"
-          rel="noreferrer"
-          class="hover:underline ml-1"
+    <footer class="navbar__muni text-white mt-auto">
+      <div class="container mx-auto w-full px-4 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+          <!-- Institución -->
+          <div>
+            <h3 class="font-semibold text-white mb-3">
+              Juzgado de Faltas Municipal
+            </h3>
+
+            <p class="text-white/90">
+              Portal informativo del Juzgado de Faltas de la Municipalidad de la
+              Ciudad de San Fernando del Valle de Catamarca. Desde aquí podés
+              acceder a información sobre infracciones, requisitos y trámites,
+              además de ingresar a los sistemas oficiales para consultas, pagos
+              y presentación de descargos.
+            </p>
+          </div>
+
+          <!-- Contacto -->
+          <div>
+            <h3 class="font-semibold text-white mb-3">
+              Información de Contacto
+            </h3>
+
+            <ul class="space-y-2 text-white/90">
+              <li>
+                <a
+                  href="https://maps.app.goo.gl/p6Ctxfd3hqmMK4A88"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 hover:text-white hover:underline"
+                >
+                  <!-- MapPin -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                    ></path>
+                  </svg>
+                  Maipú Norte 550, Catamarca, Argentina
+                </a>
+              </li>
+
+              <li class="flex items-center gap-2">
+                <!-- Phone -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V21a1 1 0 01-1 1C10.3 22 2 13.7 2 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"
+                  ></path>
+                </svg>
+                <a href="tel:+5493834437408" class="hover:text-white hover:underline">
+                +54 9 383 4437408
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="mailto:juzgadodefaltas@catamarcaciudad.gob.ar"
+                  class="flex items-center gap-2 hover:text-white hover:underline"
+                >
+                  <!-- Mail -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 4H4a2 2 0 00-2 2v.01L12 13l10-6.99V6a2 2 0 00-2-2z"
+                    ></path>
+                    <path
+                      d="M22 8.24l-10 7-10-7V18a2 2 0 002 2h16a2 2 0 002-2V8.24z"
+                    ></path>
+                  </svg>
+                  juzgadodefaltas@catamarcaciudad.gob.ar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Enlaces -->
+          <div>
+            <h3 class="font-semibold text-white mb-3">Enlaces Oficiales</h3>
+
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="https://www.catamarcaciudad.gob.ar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 text-white/90 hover:text-white hover:underline"
+                >
+                  🌐 Portal Oficial del Municipio
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://juzgadoinfo.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 text-white/90 hover:text-white hover:underline"
+                >
+                  ℹ️ Portal Informativo del Juzgado de Faltas
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://portal.catamarca.gob.ar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 text-white/90 hover:text-white hover:underline"
+                >
+                  🏛️ Gobierno de la Ciudad
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-white/20 mt-6 pt-4 text-center text-xs text-white/80"
         >
-          Municipalidad de San Fernando del Valle de Catamarca
-        </a>
+          © {new Date().getFullYear()} Municipalidad de la Ciudad de San Fernando
+          del Valle de Catamarca. Secretaría de Gabinete y Modernización.
+        </div>
       </div>
     </footer>
   </body>
