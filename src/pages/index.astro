@@ -159,7 +159,9 @@ import {
           </p>
 
           <ul class="text-sm text-slate-700 space-y-2">
-            <li>✔ Fotocopia del DNI de la persona que va a pagar la infracción</li>
+            <li>
+              ✔ Fotocopia del DNI de la persona que va a pagar la infracción
+            </li>
             <!-- <li>✔ Fotocopia del DNI del titular</li>
             <li>✔ Fotocopia del DNI del infractor</li>
             <li>✔ Presentarse dentro de los 30 días desde la notificación</li> -->
@@ -185,11 +187,44 @@ import {
             </a>
           </div>
 
+          <div id="transitoDemoradoInfo" class="hidden mt-5">
+            <div
+              class="bg-red-50 border border-red-200 text-red-900 text-xs rounded-lg p-4 mb-4"
+            >
+              ⚠️ No se puede acceder al pago online si la infracción posee
+              retención del vehículo
+            </div>
+
+            <p class="text-sm text-slate-700 mb-4">
+              Si posee retención del vehículo o corresponde a casos de
+              alcoholemia, willy o escape libre, el trámite es <strong
+                >presencial</strong
+              > por mesa de entrada del Juzgado de Faltas.
+            </p>
+
+            <div class="border border-slate-300 rounded-lg p-4 bg-slate-50">
+              <h5 class="font-semibold text-slate-800 mb-3">
+                Requisitos a presentar
+              </h5>
+
+              <ul class="text-sm text-slate-700 space-y-2">
+                <li>✔ Fotocopia del DNI del conductor</li>
+                <li>✔ Fotocopia de la licencia del conductor</li>
+                <li>✔ Fotocopia del DNI del titular</li>
+                <li>✔ Nota solicitando la devolución del vehículo</li>
+                <li>
+                  ✔ Fotocopia de la documentación del vehículo (cédula o título)
+                </li>
+                <li>✔ Fotocopia del seguro vigente</li>
+              </ul>
+            </div>
+          </div>
+
           <div
             class="mt-4 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-lg p-4"
           >
-            <strong>⚠️ Importante:</strong> Si vas a realizar este trámite presencial, acercate por Mesa de
-            Entrada del Juzgado de Faltas según fecha de labrado:
+            <strong>⚠️ Importante:</strong> Si vas a realizar este trámite presencial,
+            acercate por Mesa de Entrada del Juzgado de Faltas según fecha de labrado:
             <br /><br />
             📅 Del 1° al 15 → Juzgado de Faltas N° 1
             <br />
@@ -269,6 +304,9 @@ import {
       const descargoList = document.getElementById(
         "descargoList",
       ) as HTMLUListElement;
+      const transitoDemoradoInfo = document.getElementById(
+        "transitoDemoradoInfo",
+      ) as HTMLDivElement;
       const pagoRestriccion = document.getElementById(
         "pagoRestriccion",
       ) as HTMLDivElement;
@@ -309,9 +347,13 @@ import {
           const type = btn.dataset.type;
           if (!type) return;
 
+          // Reset general
           multasContent.classList.add("hidden");
           libreDeudaContent.classList.add("hidden");
           descargoOnlineContent.classList.add("hidden");
+
+          // 👇 IMPORTANTE: ocultar SIEMPRE antes de evaluar
+          transitoDemoradoInfo.classList.add("hidden");
 
           if (type === "descargo_online") {
             modalTitle.textContent = "Presentar Descargo";
@@ -326,25 +368,23 @@ import {
             if (type === "transito") {
               modalTitle.textContent = "Acta de Infracción de Tránsito";
               descargoList.innerHTML = commonDescargo + transitoExtra;
-              // pagoRestriccion.innerHTML = restriccionTransito;
+
+              // 👇 Mostrar solo acá
+              transitoDemoradoInfo.classList.remove("hidden");
             } else if (type === "obras") {
               modalTitle.textContent = "Acta de Obras Particulares";
               descargoList.innerHTML = commonDescargo + comercialExtra;
-              // pagoRestriccion.innerHTML = restriccionObras;
             } else if (type === "bromatologia") {
               modalTitle.textContent = "Acta de Bromatología";
               descargoList.innerHTML = commonDescargo + comercialExtra;
-              // pagoRestriccion.innerHTML = restriccionBromatologia;
             } else if (type === "inspeccion") {
               modalTitle.textContent = "Acta de Inspección General";
               descargoList.innerHTML = commonDescargo + comercialExtra;
-              // pagoRestriccion.innerHTML = restriccionInspeccion;
             }
           }
 
           modal.classList.remove("hidden");
           modal.classList.add("flex");
-
           document.body.style.overflow = "hidden";
         });
       });
@@ -528,15 +568,8 @@ import {
           </p>
           <p>
             <strong>Horario:</strong><br />
-            Lunes a Sábado · 08:00 a 15:00 hs<br />
-            Domingo · 08:00 a 12:00 hs
+            Lunes a Viernes · 08:00 a 15:00 hs<br />
           </p>
-        </div>
-
-        <div
-          class="mt-4 bg-slate-50 rounded-xl p-4 text-sm text-slate-600 border"
-        >
-          💡 Podés iniciar todo online antes de acercarte, para evitar esperas.
         </div>
 
         <div class="mt-5 rounded-xl overflow-hidden border border-slate-200">
@@ -554,49 +587,52 @@ import {
 
   <!-- Preguntas frecuentes -->
   <section class="bg-white py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl font-bold text-center mb-10">Preguntas frecuentes</h2>
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-8 text-slate-800">
+        Preguntas frecuentes
+      </h2>
 
-      <div class="space-y-4 max-w-6xl mx-auto">
-        <details
-          class="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200"
-        >
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            ¿Cómo puedo pagar una multa si ya está vencida?
-          </summary>
-          <p class="mt-3 text-sm text-slate-600">
-            Podés pagarla igualmente. El sistema mostrará automáticamente el
-            monto actualizado con los recargos correspondientes y los medios de
-            pago disponibles.
-          </p>
-        </details>
+      <div class="space-y-4">
+        <!-- Pregunta 1 -->
+        <div class="bg-slate-50 border border-slate-300 rounded-lg p-5">
+          <h3 class="font-semibold text-slate-800 mb-2">
+            ¿Qué puedo hacer si me labraron un Acta de Infracción?
+          </h3>
+          <ul class="text-sm text-slate-700 list-disc pl-5 space-y-1">
+            <li>
+              Podés consultar en qué estado se encuentra y ver si posees
+              descuentos o recargos.
+            </li>
+            <li>También podés presentar un descargo (ver requisitos).</li>
+          </ul>
+        </div>
 
-        <details
-          class="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200"
-        >
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            ¿Qué debo hacer si no estoy de acuerdo con la multa recibida?
-          </summary>
-          <p class="mt-3 text-sm text-slate-600">
-            Podés presentar un descargo antes de realizar cualquier pago. Para
-            eso, reuní la documentación correspondiente y seguí los requisitos
-            indicados según el tipo de acta.
+        <!-- Pregunta 2 -->
+        <div class="bg-slate-50 border border-slate-300 rounded-lg p-5">
+          <h3 class="font-semibold text-slate-800 mb-2">
+            ¿Qué beneficio obtengo con el pago voluntario?
+          </h3>
+          <p class="text-sm text-slate-700">
+            El infractor cuenta con un período en el cual puede acceder a pagar
+            la infracción con un porcentaje de descuento sobre el valor mínimo
+            de la misma.
           </p>
-        </details>
+        </div>
 
-        <details
-          class="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200"
-        >
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            ¿Es obligatorio asistir personalmente al Juzgado?
-          </summary>
-          <p class="mt-3 text-sm text-slate-600">
-            En la mayoría de los casos no es obligatorio. Podés iniciar y
-            resolver el trámite online desde el sistema de pagos o consulta.
-            Solo deberás asistir si el caso requiere resolución presencial o tu
-            vehículo fue retenido.
+        <!-- Pregunta 3 -->
+        <div class="bg-slate-50 border border-slate-300 rounded-lg p-5">
+          <h3 class="font-semibold text-slate-800 mb-2">
+            ¿Quiero presentar un descargo?
+          </h3>
+          <p class="text-sm text-slate-700 leading-relaxed">
+            Para presentar el descargo debe realizar una Nota explicando el
+            motivo del descargo acompañada con una fotocopia del DNI y cualquier
+            documentación que considere necesaria como prueba.
+            <br /><br />
+            (Al presentar el descargo en caso de que no se le dé lugar a lo presentado
+            perderá el beneficio del descuento, abonando la totalidad de la multa).
           </p>
-        </details>
+        </div>
       </div>
     </div>
   </section>
