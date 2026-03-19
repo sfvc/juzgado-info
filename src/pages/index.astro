@@ -31,9 +31,15 @@ import {
       </p>
 
       <div class="flex justify-center gap-3 flex-wrap">
-        <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm">Información oficial</span>
-        <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm">Trámites digitales</span>
-        <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm">Atención municipal</span>
+        <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm"
+          >Información oficial</span
+        >
+        <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm"
+          >Trámites digitales</span
+        >
+        <span class="bg-white/10 backdrop-blur px-5 py-2 rounded-full text-sm"
+          >Atención municipal</span
+        >
       </div>
     </div>
   </section>
@@ -123,13 +129,13 @@ import {
             Pago Voluntario Online
           </h4>
 
-          <div
+          <!-- <div
             class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-sm text-emerald-900 mb-4"
           >
             ✔ En la mayoría de los casos no necesitás presentar documentación.<br
             />
             ✔ Solo debés ingresar al sistema y realizar el pago de la infracción.
-          </div>
+          </div> -->
 
           <div class="mt-3">
             <a
@@ -141,10 +147,10 @@ import {
             </a>
           </div>
 
-          <hr class="my-6" />
+          <hr class="my-4" />
 
           <h4 class="font-semibold text-blue-700">
-            Pago Voluntario Presencial
+            Pago Voluntario Presencial / Online
           </h4>
 
           <p class="font-semibold text-green-700 mb-3 mt-1">
@@ -153,22 +159,36 @@ import {
           </p>
 
           <ul class="text-sm text-slate-700 space-y-2">
-            <li>✔ Fotocopia del DNI del titular</li>
+            <li>✔ Fotocopia del DNI de la persona que va a pagar la infracción</li>
+            <!-- <li>✔ Fotocopia del DNI del titular</li>
             <li>✔ Fotocopia del DNI del infractor</li>
-            <li>✔ Presentarse dentro de los 30 días desde la notificación</li>
+            <li>✔ Presentarse dentro de los 30 días desde la notificación</li> -->
           </ul>
+
           <div id="pagoRestriccion" class="mt-3"></div>
         </div>
 
         <div>
           <h4 class="font-semibold text-indigo-700 mb-3">
-            Requisitos para el Descargo Presencial
+            Requisitos para el Descargo Presencial / Online
           </h4>
+
           <ul id="descargoList" class="text-sm text-slate-700 space-y-2"></ul>
+
+          <div class="mt-3">
+            <a
+              href="https://juzgadodescargo.netlify.app/"
+              target="_blank"
+              class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white text-sm font-semibold px-5 py-2.5 rounded-lg"
+            >
+              Ir al Sistema de Descargo Online
+            </a>
+          </div>
+
           <div
             class="mt-4 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-lg p-4"
           >
-            <strong>⚠️ Importante:</strong> Este trámite es presencial por Mesa de
+            <strong>⚠️ Importante:</strong> Si vas a realizar este trámite presencial, acercate por Mesa de
             Entrada del Juzgado de Faltas según fecha de labrado:
             <br /><br />
             📅 Del 1° al 15 → Juzgado de Faltas N° 1
@@ -263,23 +283,23 @@ import {
       ) as HTMLDivElement;
 
       const commonDescargo = `
-      <li>✔ Fotocopia del DNI del titular</li>
-      <li>✔ Fotocopia del DNI del infractor</li>
       <li>✔ Nota explicando el motivo del descargo</li>
+      <li>✔ Fotocopia del DNI de la persona que va a presentar el descargo</li>
       `;
 
-      const comercialExtra = `<li>✔ Habilitación comercial correspondiente o constancia de alta en ARCA</li>`;
+      // <li>✔ Fotocopia del DNI del titular</li>
+      // <li>✔ Fotocopia del DNI del infractor</li>
+
+      const comercialExtra = ``;
+
+      // <li>✔ Habilitación comercial correspondiente o constancia de alta en ARCA</li>
 
       const transitoExtra = `
-      <li>✔ Fotocopia de la licencia de conducir del infractor</li>
-      <li>✔ Fotocopia de la cédula del infractor</li>
-      <li>✔ Fotocopia del seguro vigente</li>
     `;
 
-      // const restriccionTransito = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a <strong>retención de vehículo</strong> o los códigos: <strong>163, 164, 166, 169, 193, 194, 81</strong>.</div>`;
-      // const restriccionObras = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>87, 88, 24</strong>.</div>`;
-      // const restriccionInspeccion = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 62, 14</strong>.</div>`;
-      // const restriccionBromatologia = `<div class="bg-red-50 border border-red-200 text-red-800 text-xs rounded-lg p-3">⚠️ No se puede acceder al pago online si la infracción corresponde a los códigos: <strong>24, 14, 72</strong>.</div>`;
+      // <li>✔ Fotocopia de la licencia de conducir del infractor</li>
+      // <li>✔ Fotocopia de la cédula del infractor</li>
+      // <li>✔ Fotocopia del seguro vigente</li>
 
       const buttons =
         document.querySelectorAll<HTMLButtonElement>(".acta-card");
@@ -343,91 +363,8 @@ import {
     });
   </script>
 
-  <!-- Qué necesitás llevar / saber -->
-  <section class="bg-white py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl font-bold text-slate-800 text-center mb-3">
-        ¿Qué necesitás para resolver una multa?
-      </h2>
-      <p class="text-center text-slate-500 mb-12">
-        Traé esta documentación y conocé los plazos para evitar recargos
-      </p>
-
-      <div class="grid gap-8 md:grid-cols-3">
-        <!-- Documentación -->
-        <div
-          class="bg-slate-50 rounded-2xl p-7 shadow-sm border border-slate-200"
-        >
-          <div class="flex items-center gap-3 mb-4 text-blue-700">
-            <ClipboardCheck size={22} />
-            <h3 class="font-semibold text-slate-800">Documentación</h3>
-          </div>
-          <ul class="space-y-2 text-sm text-slate-700">
-            <li>✔ DNI del infractor</li>
-            <li>✔ DNI del titular del vehículo</li>
-            <li>✔ Cédula verde o título del automotor</li>
-            <li>✔ Licencia de conducir</li>
-            <li>✔ Comprobante de seguro</li>
-            <li class="text-xs text-slate-500 mt-2">
-              📄 Toda la documentación debe presentarse en fotocopia
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pagos -->
-        <div
-          class="bg-slate-50 rounded-2xl p-7 shadow-sm border border-slate-200"
-        >
-          <div class="flex items-center gap-3 mb-4 text-emerald-700">
-            <CircleDollarSign size={22} />
-            <h3 class="font-semibold text-slate-800">Pago voluntario</h3>
-          </div>
-          <ul class="space-y-2 text-sm text-slate-700">
-            <li>
-              ✔ Si realizás el pago dentro de los <strong>30 días</strong>,
-              accedés a un <strong class="text-emerald-700"
-                >40% de descuento</strong
-              >
-            </li>
-            <li>✔ Podés pagar online o presencialmente</li>
-            <li>✔ El sistema emite comprobante oficial</li>
-            <li>
-              ✔ Luego del vencimiento se pierde el descuento y se actualiza el
-              monto
-            </li>
-          </ul>
-        </div>
-
-        <!-- Plazos -->
-        <div
-          class="bg-slate-50 rounded-2xl p-7 shadow-sm border border-slate-200"
-        >
-          <div class="flex items-center gap-3 mb-4 text-indigo-700">
-            <Clock size={22} />
-            <h3 class="font-semibold text-slate-800">Descargos y recargos</h3>
-          </div>
-          <ul class="space-y-2 text-sm text-slate-700">
-            <li>
-              ✔ Si presentás descargo, <strong>perdés el descuento</strong>
-            </li>
-            <li>✔ Pasados los 30 días entra en <strong>rebeldía</strong></li>
-            <li>✔ En rebeldía se quita el descuento y se suma recargo</li>
-            <li>✔ Algunas faltas requieren resolución judicial previa</li>
-          </ul>
-        </div>
-      </div>
-
-      <div
-        class="mt-10 bg-blue-50 border border-blue-100 rounded-2xl p-6 text-sm text-slate-700 max-w-6xl mx-auto"
-      >
-        💡 <strong>Recomendación:</strong> Consultá tu multa online antes de acercarte
-        para confirmar estado, monto actualizado y documentación necesaria.
-      </div>
-    </div>
-  </section>
-
   <!-- Accesos principales -->
-  <section class="bg-slate-100 py-12 px-4">
+  <section class="bg-white py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl font-bold text-slate-800 text-center mb-3">
         ¿Qué documentación y plazos debés tener en cuenta para resolver tu
